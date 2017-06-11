@@ -85,7 +85,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.ETHAddress = match[2]
           .save(function (err) {
             if (err) return handleError(err);
-            console.log("User updated : " + telegramID);
+            console.log("User updated : " + fromId);
           })
         }
       })
