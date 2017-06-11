@@ -30,19 +30,13 @@ bot.getMe().then(function (me) {
 var helpText = "Commands:\n /chaintact help - List of commands\n"
   + "/chaintact set [ETH address] - Set your ETH address to your profil\n"
   + "/chaintact get [telegram user] - Sends this user ETH address"
-  + "\n /chaintact group - Sends the list of all group users ETH addresses"
+  + "\n/chaintact group - Sends the list of all group users ETH addresses"
 
 //matches /start
 bot.onText(/\/start/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
   var message = "Welcome to your ChaintactBot\n"
   message += helpText
-  bot.sendMessage(fromId, message);
-});
-
-//match /chaintact
-bot.onText(/\/chaintact/, function (msg, match) {
-  var message = helpText
   bot.sendMessage(fromId, message);
 });
 
