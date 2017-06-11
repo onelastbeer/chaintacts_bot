@@ -1,18 +1,23 @@
 var TelegramBot = require('node-telegram-bot-api');
 var bot = new TelegramBot(process.env.CHAINTACT_BOT_TOKEN, {polling: true});
 var mongoose = require('mongoose');
-var dbUrl = "mongodb://localhost:27017/chaintactdb";
+var dbUrl = "mongodb://localhost/chaintactdb";
 
 mongoose.connect(dbUrl);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("I'm in!");
+});
 
-//Database
+/*Database
 var peopleSchema = mongoose.Schema({
     telegramID: String,
     telegramUsername: String,
     firstName: String,
     lastName: String,
     ETHAddress: String
-});
+});*/
 
 bot.getMe().then(function (me) {
   console.log('Hi my name is %s!', me.username);
