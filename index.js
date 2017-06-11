@@ -36,7 +36,7 @@ var helpText = "Commands for /chaintact :\n"
 //matches /start
 bot.onText(/\/start/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
-  var chatId = msg.from.id;
+  var chatId = msg.chat.id;
   var message = "Welcome to your ChaintactBot\n"
   message += helpText
   bot.sendMessage(chatId, message);
@@ -45,6 +45,7 @@ bot.onText(/\/start/, function (msg, match) {
 //match /chaintact [whatever]
 bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
+  var chatId = msg.chat.id;
   var fromUsername = "";
   var fromLastName = "";
   var fromFirstName = "";
