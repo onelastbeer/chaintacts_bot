@@ -10,10 +10,10 @@ bot.getMe().then(function (me) {
 bot.onText(/\/start/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
   var message = "Welcome to your ChaintactBot\n"
-  message += "Commands:"
-  message += "/chaintact help - List of commands"
-  message += "/chaintact set [ETH address] - Set your ETH address to your profil"
-  message += "/chaintact get [telegram user] - Sends this user ETH address"
+  message += "Commands:\n"
+  message += "/chaintact help - List of commands\n"
+  message += "/chaintact set [ETH address] - Set your ETH address to your profil\n"
+  message += "/chaintact get [telegram user] - Sends this user ETH address\n"
   message += "/chaintact group - Sends the list of all group users ETH addresses"
   bot.sendMessage(fromId, message);
 });
