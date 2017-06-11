@@ -107,13 +107,16 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           message = "No match found for username " + fromUsername
           bot.sendMessage(chatId, message);
         } else if(user.ETHAddress == null) {
-          if(user.firstName != null) message = user.firstName
-          else message = user.telegramUsername
+          if(user.firstName != null) {
+            message = user.firstName + " (@" + user.telegramUsername +")"
+          } else message = user.telegramUsername
           message += " : unavailable"
           bot.sendMessage(chatId, message);
         } else {
-          if(user.firstName != null) message = user.firstName
-          else message = user.telegramUsername
+          if(user.firstName != null) {
+            message = user.firstName + " (@" + user.telegramUsername +")"
+          }
+          else message = "@" + user.telegramUsername
           message += " : " + user.ETHAddress
           bot.sendMessage(chatId, message);
         }
@@ -127,3 +130,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   }
   if(message != null) bot.sendMessage(chatId, message);
 });
+
+function printUser(user) {
+
+}
