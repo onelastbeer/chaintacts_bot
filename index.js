@@ -52,7 +52,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   if(msg.from.last_name != null) fromLastName = msg.from.username
   var command = match[1];
   var message;
-  console.log(match[2]);
+  console.log(match[1]);
   switch(command) {
     case "help":
       message = helpText;
