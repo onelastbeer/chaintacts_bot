@@ -89,7 +89,6 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.save(function (err) {
             if (err) return handleError(err, user);
             console.log("User " + fromId + "updated with address " + commandArr[1]);
-            console.log(user)
             message = "Your address has been updated to :\n"
             message += commandArr[1]
             bot.sendMessage(fromId, message);
@@ -98,7 +97,16 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       })
       break;
     case "get":
-      message = "Coming soon!";
+      if(commandArr[1] == null) {
+        message = "Please input a username !\n" + helpText
+      }
+      User.findOne({telegramUsername: commandArr[1]}, function(err, user) {
+        if(user == null) {
+          message = "No match found for username " + fromUsername
+        } else {
+          message = user.ETHAddress
+        }
+      }
       break;
     case "group":
       message = "Coming soon!";
