@@ -75,10 +75,10 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
 
       User.findOne({telegramID: fromId}, function(err, user) {
         if(user == null) {
-          var newUser = new User({telegramID:fromId, telegramUsername:fromUsername, firstName:fromFirstName, lastName:fromLastName, ETHAddress:match[2]});
+          var newUser = new User({telegramID:fromId, telegramUsername:fromUsername, firstName:fromFirstName, lastName:fromLastName, ETHAddress:commandArr[1]});
           newUser.save(function (err) {
             if (err) return handleError(err);
-            console.log("User " + fromId + "created with address " + commandArr[1]);
+            console.log("User " + fromId + " created with address " + commandArr[1]);
             message = "You have been added to the database with address :\n"
             message += commandArr[1]
             bot.sendMessage(chatId, message);
@@ -90,7 +90,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.ETHAddress = commandArr[1]
           user.save(function (err) {
             if (err) return handleError(err, user);
-            console.log("User " + fromId + "updated with address " + commandArr[1]);
+            console.log("User " + fromId + " updated with address " + commandArr[1]);
             message = "Your address has been updated to :\n"
             message += commandArr[1]
             bot.sendMessage(chatId, message);
@@ -116,7 +116,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           if(user.firstName != null) {
             message = user.firstName + " (@" + user.telegramUsername +")"
           }
-          else message = "@" + user.telegramUsername
+          else message = user.telegramUsername
           message += " : " + user.ETHAddress
           bot.sendMessage(chatId, message);
         }
