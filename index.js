@@ -51,13 +51,13 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       message = helpText;
       break;
     case "set":
-      message = "coming soon!";
+      message = "Coming soon!";
       break;
     case "get":
-      message = "coming soon!";
+      message = "Coming soon!";
       break;
     case "group":
-      message = "coming soon!";
+      message = "Coming soon!";
       break;
     default:
       message = helpText;
