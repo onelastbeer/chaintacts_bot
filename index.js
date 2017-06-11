@@ -106,7 +106,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
         } else {
           message = user.ETHAddress
         }
-      )}
+      })
       break;
     case "group":
       message = "Coming soon!";
