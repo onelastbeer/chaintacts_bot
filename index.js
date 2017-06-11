@@ -1,7 +1,7 @@
 var TelegramBot = require('node-telegram-bot-api');
 var bot = new TelegramBot(process.env.CHAINTACT_BOT_TOKEN, {polling: true});
 var mongoose = require('mongoose');
-var dbUrl = "mongodb://localhost/chaintactdb";
+var dbUrl = "mongodb://chaintact_db/chaintactdb";
 
 mongoose.connect(dbUrl);
 var db = mongoose.connection;
