@@ -106,8 +106,15 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
         if(user == null) {
           message = "No match found for username " + fromUsername
           bot.sendMessage(chatId, message);
+        } else if(user.ETHAddress == null) {
+          if(user.firstName != null) message = user.firstName
+          else message = user.telegramUsername
+          message += " : unavailable"
+          bot.sendMessage(chatId, message);
         } else {
-          message = user.ETHAddress
+          if(user.firstName != null) message = user.firstName
+          else message = user.telegramUsername
+          message += " : " + user.ETHAddress
           bot.sendMessage(chatId, message);
         }
       })
