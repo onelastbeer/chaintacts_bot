@@ -54,8 +54,6 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var commandArr = command.split(" ");
   var message;
 
-  console.log(commandArr);
-
   if(commandArr.length < 1) {
     message = helpText;
     bot.sendMessage(fromId, message);
@@ -68,7 +66,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       break;
     case "set":
 
-      if(commandArr[2] == null) {
+      if(commandArr[1] == null) {
         message = "Please enter an ETH address!";
         break;
       }
