@@ -77,6 +77,8 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           newUser.save(function (err) {
             if (err) return handleError(err);
             console.log("User created : " + fromId);
+            message = "You have been added to the database with address :\n"
+            message += commandArr[1]
           })
         } else {
           user.telegramUsername = fromUsername
@@ -86,6 +88,8 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.save(function (err) {
             if (err) return handleError(err);
             console.log("User updated : " + fromId);
+            message = "Your address has been updated to :\n"
+            message += commandArr[1]
           })
         }
       })
