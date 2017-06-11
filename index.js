@@ -52,6 +52,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   if(msg.from.last_name != null) fromLastName = msg.from.username
   var command = match[1];
   var message;
+  console.log(match[2]);
   switch(command) {
     case "help":
       message = helpText;
@@ -59,7 +60,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
     case "set":
 
       if(match[2] == null) {
-        message = "please enter an ETH address!";
+        message = "Please enter an ETH address!";
         break;
       }
 
