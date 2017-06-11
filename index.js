@@ -61,9 +61,6 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       break;
     default:
       message = helpText;
-    if(null == match[1]) {
-      message = helpText;
-    }
   }
   bot.sendMessage(fromId, message);
 });
