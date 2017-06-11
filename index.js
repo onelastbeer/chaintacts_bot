@@ -83,7 +83,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.firstName = fromFirstName
           user.lastName = fromLastName
           user.ETHAddress = match[2]
-          .save(function (err) {
+          user.save(function (err) {
             if (err) return handleError(err);
             console.log("User updated : " + fromId);
           })
