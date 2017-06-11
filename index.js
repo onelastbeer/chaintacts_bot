@@ -85,7 +85,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.telegramUsername = fromUsername
           user.firstName = fromFirstName
           user.lastName = fromLastName
-          user.ETHAddress = match[1]
+          user.ETHAddress = commandArr[1]
           user.save(function (err) {
             if (err) return handleError(err, user);
             console.log("User " + fromId + "updated with address " + commandArr[1]);
