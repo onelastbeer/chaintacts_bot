@@ -54,6 +54,8 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var commandArr = command.split(" ");
   var message;
 
+  console.log(commandArr);
+
   if(commandArr.length < 1) {
     message = helpText;
     bot.sendMessage(fromId, message);
