@@ -5,6 +5,9 @@ var express = require('express');
 var app = express();
 
 class GreetingController extends TelegramBaseController {
+  /**
+   * @param {Scope} $
+   */
     greetingHandler($) {
         $.sendMessage('Hey, how are you?')
     }
