@@ -103,8 +103,9 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       User.findOne({telegramUsername: commandArr[1]}, function(err, user) {
         if(user == null) {
           message = "No match found for username " + fromUsername
+          bot.sendMessage(fromId, message);
         } else {
-          message = user.ETHAddress
+          message = "" + user.ETHAddress
           bot.sendMessage(fromId, message);
         }
       })
