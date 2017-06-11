@@ -1,11 +1,24 @@
 var TelegramBot = require('node-telegram-bot-api');
 var bot = new TelegramBot(process.env.CHAINTACT_BOT_TOKEN, {polling: true});
+var mongoose = require('mongoose');
+var dbUrl = "mongodb://localhost:27017/chaintactdb";
 
+mongoose.connect(dbUrl);
+
+//Database
+var peopleSchema = mongoose.Schema({
+    telegramID: String,
+    telegramUsername: String,
+    firstName: String,
+    lastName: String,
+    ETHAddress: String
+});
 
 bot.getMe().then(function (me) {
   console.log('Hi my name is %s!', me.username);
 });
 
+//BOT commands
 //matches /start
 bot.onText(/\/start/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
@@ -21,7 +34,10 @@ bot.onText(/\/start/, function (msg, match) {
 //match /weather [whatever]
 bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
-  var postcode = match[1];
-  var message = "Coming soon"
+  var command = match[1];
+
+  switch(command) {
+
+  }
   bot.sendMessage(fromId, message);
 });
