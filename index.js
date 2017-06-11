@@ -44,6 +44,12 @@ bot.onText(/\/start/, function (msg, match) {
 //match /chaintact [whatever]
 bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
+  var fromUsername = "";
+  var fromLastName = "";
+  var fromFirstName = "";
+  if(msg.from.username != null) fromUsername = msg.from.username
+  if(msg.from.first_name != null) fromFirstName = msg.from.username
+  if(msg.from.last_name != null) fromLastName = msg.from.username
   var command = match[1];
   var message;
   switch(command) {
@@ -51,8 +57,30 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       message = helpText;
       break;
     case "set":
-      message = "Coming soon!";
-      message += " fromId:" + fromId
+
+      if(match[2] == null) {
+        message = "please enter an ETH address!";
+        break;
+      }
+
+      User.findOne({telegramID: fromId}, function(err, user) {
+        if(user == null) {
+          var newUser = new User({telegramID:fromId, telegramUsername:fromUsername, firstName:fromFirstName, lastName:fromLastName, ETHAddress:match[2]});
+          newUser.save(function (err) {
+            if (err) return handleError(err);
+            console.log("User created : " + telegramID);
+          })
+        } else {
+          user.telegramUsername = fromUsername
+          user.firstName = fromFirstName
+          user.lastName = fromLastName
+          user.ETHAddress = match[2]
+          .save(function (err) {
+            if (err) return handleError(err);
+            console.log("User updated : " + telegramID);
+          })
+        }
+      })
       break;
     case "get":
       message = "Coming soon!";
