@@ -105,6 +105,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           message = "No match found for username " + fromUsername
         } else {
           message = user.ETHAddress
+          bot.sendMessage(fromId, message);
         }
       })
       break;
