@@ -48,8 +48,8 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var fromLastName = "";
   var fromFirstName = "";
   if(msg.from.username != null) fromUsername = msg.from.username
-  if(msg.from.first_name != null) fromFirstName = msg.from.username
-  if(msg.from.last_name != null) fromLastName = msg.from.username
+  if(msg.from.first_name != null) fromFirstName = msg.from.first_name
+  if(msg.from.last_name != null) fromLastName = msg.from.last_name
   var command = match[1];
   var commandArr = command.split(" ");
   var message;
