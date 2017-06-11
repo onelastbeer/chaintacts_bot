@@ -85,7 +85,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.telegramUsername = fromUsername
           user.firstName = fromFirstName
           user.lastName = fromLastName
-          user.ETHAddress = match[2]
+          user.ETHAddress = match[1]
           user.save(function (err) {
             if (err) return handleError(err, user);
             console.log("User " + fromId + "updated with address " + commandArr[1]);
@@ -105,7 +105,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           message = "No match found for username " + fromUsername
           bot.sendMessage(fromId, message);
         } else {
-          message = "" + user.ETHAddress
+          message = user.ETHAddress
           bot.sendMessage(fromId, message);
         }
       })
