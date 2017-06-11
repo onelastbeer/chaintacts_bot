@@ -76,7 +76,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           var newUser = new User({telegramID:fromId, telegramUsername:fromUsername, firstName:fromFirstName, lastName:fromLastName, ETHAddress:match[2]});
           newUser.save(function (err) {
             if (err) return handleError(err);
-            console.log("User created : " + telegramID);
+            console.log("User created : " + fromId);
           })
         } else {
           user.telegramUsername = fromUsername
