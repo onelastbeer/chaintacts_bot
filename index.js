@@ -52,6 +52,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       break;
     case "set":
       message = "Coming soon!";
+      message += " fromId:" + fromId
       break;
     case "get":
       message = "Coming soon!";
