@@ -1,6 +1,5 @@
 var TelegramBot = require('node-telegram-bot-api');
-var token = 'process.env.CHAINTACT_BOT_TOKEN';
-var bot = new TelegramBot(token, {polling: true});
+var bot = new TelegramBot(process.env.CHAINTACT_BOT_TOKEN, {polling: true});
 
 
 bot.getMe().then(function (me) {
