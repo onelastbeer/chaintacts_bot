@@ -36,9 +36,10 @@ var helpText = "Commands for /chaintact :\n"
 //matches /start
 bot.onText(/\/start/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
+  var chatId = msg.from.id;
   var message = "Welcome to your ChaintactBot\n"
   message += helpText
-  bot.sendMessage(fromId, message);
+  bot.sendMessage(chatId, message);
 });
 
 //match /chaintact [whatever]
@@ -56,7 +57,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
 
   if(commandArr.length < 1) {
     message = helpText;
-    bot.sendMessage(fromId, message);
+    bot.sendMessage(chatId, message);
     return;
   }
 
@@ -79,7 +80,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
             console.log("User " + fromId + "created with address " + commandArr[1]);
             message = "You have been added to the database with address :\n"
             message += commandArr[1]
-            bot.sendMessage(fromId, message);
+            bot.sendMessage(chatId, message);
           })
         } else {
           user.telegramUsername = fromUsername
@@ -91,7 +92,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
             console.log("User " + fromId + "updated with address " + commandArr[1]);
             message = "Your address has been updated to :\n"
             message += commandArr[1]
-            bot.sendMessage(fromId, message);
+            bot.sendMessage(chatId, message);
           })
         }
       })
@@ -103,10 +104,10 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
       User.findOne({telegramUsername: commandArr[1]}, function(err, user) {
         if(user == null) {
           message = "No match found for username " + fromUsername
-          bot.sendMessage(fromId, message);
+          bot.sendMessage(chatId, message);
         } else {
           message = user.ETHAddress
-          bot.sendMessage(fromId, message);
+          bot.sendMessage(chatId, message);
         }
       })
       break;
@@ -116,5 +117,5 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
     default:
       message = helpText;
   }
-  if(message != null) bot.sendMessage(fromId, message);
+  if(message != null) bot.sendMessage(chatId, message);
 });
