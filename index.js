@@ -87,8 +87,9 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.lastName = fromLastName
           user.ETHAddress = match[2]
           user.save(function (err) {
-            if (err) return handleError(err);
+            if (err) return handleError(err, user);
             console.log("User " + fromId + "updated with address " + commandArr[1]);
+            console.log(user)
             message = "Your address has been updated to :\n"
             message += commandArr[1]
             bot.sendMessage(fromId, message);
