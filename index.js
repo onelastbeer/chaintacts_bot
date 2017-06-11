@@ -27,10 +27,11 @@ bot.getMe().then(function (me) {
 
 //BOT commands
 
-var helpText = "Commands:\n /chaintact help - List of commands\n"
-  + "/chaintact set [ETH address] - Set your ETH address to your profil\n"
-  + "/chaintact get [telegram user] - Sends this user ETH address"
-  + "\n/chaintact group - Sends the list of all group users ETH addresses"
+var helpText = "Commands:\n"
+  + "  /chaintact help - List of commands\n"
+  + "  /chaintact set [ETH address] - Set your ETH address to your profil\n"
+  + "  /chaintact get [telegram user] - Sends this user ETH address\n"
+  + "  /chaintact group - Sends the list of all group users ETH addresses"
 
 //matches /start
 bot.onText(/\/start/, function (msg, match) {
