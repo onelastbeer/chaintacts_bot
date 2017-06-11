@@ -10,6 +10,6 @@
   "author": "Ambroise mean",
   "license": "MIT",
   "dependencies": {
-    "node-telegram-bot-api": "^3.0.0"
+    "node-telegram-bot-api": "^0.27.1"
   }
 }
