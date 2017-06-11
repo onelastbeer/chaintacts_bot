@@ -11,6 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
-    "telegram-bot-node": "^0.2.6"
+    "telegram-node-bot": "^3.0.12"
   }
 }
