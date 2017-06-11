@@ -76,7 +76,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           var newUser = new User({telegramID:fromId, telegramUsername:fromUsername, firstName:fromFirstName, lastName:fromLastName, ETHAddress:match[2]});
           newUser.save(function (err) {
             if (err) return handleError(err);
-            console.log("User created : " + fromId);
+            console.log("User " + fromId + "created with address " + commandArr[1]);
             message = "You have been added to the database with address :\n"
             message += commandArr[1]
           })
@@ -87,7 +87,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
           user.ETHAddress = match[2]
           user.save(function (err) {
             if (err) return handleError(err);
-            console.log("User updated : " + fromId);
+            console.log("User " + fromId + "updated with address " + commandArr[1]);
             message = "Your address has been updated to :\n"
             message += commandArr[1]
           })
