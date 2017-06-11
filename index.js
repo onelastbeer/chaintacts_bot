@@ -63,3 +63,10 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
   }
   bot.sendMessage(fromId, message);
 });
+
+//match /chaintact
+bot.onText(/\/chaintact/, function (msg, match) {
+  var fromId = msg.from.id; // get the id, of who is sending the message
+  var message = helpText
+  bot.sendMessage(fromId, message);
+});
