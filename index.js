@@ -79,6 +79,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
             console.log("User " + fromId + "created with address " + commandArr[1]);
             message = "You have been added to the database with address :\n"
             message += commandArr[1]
+            bot.sendMessage(fromId, message);
           })
         } else {
           user.telegramUsername = fromUsername
@@ -90,6 +91,7 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
             console.log("User " + fromId + "updated with address " + commandArr[1]);
             message = "Your address has been updated to :\n"
             message += commandArr[1]
+            bot.sendMessage(fromId, message);
           })
         }
       })
@@ -103,5 +105,5 @@ bot.onText(/\/chaintact (.+)/, function (msg, match) {
     default:
       message = helpText;
   }
-  bot.sendMessage(fromId, message);
+  if(message != null) bot.sendMessage(fromId, message);
 });
