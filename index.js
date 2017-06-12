@@ -74,17 +74,16 @@ bot.onText(/\/start/, function (msg, match) {
 bot.on("inline_query", (query) => {
   bot.answerInlineQuery(query.id, [
     {
-      text: "hello",
+      type: "contact",
+      id: "louismerlin",
+      phone_number: "+41791098364",
+      first_name: "Louis",
       callback_data: "hey"
-    },
-    {
-      text: "world",
-      callback_data: "yo !"
     }
   ]);
 });
 bot.on('callback_query', (callback) => {
-  bot.answerCallbackQuery(msg.id, callback.data);
+  bot.answerCallbackQuery(msg.id, "yes you did it");
 });
 
 //match /chaintact [whatever]
