@@ -75,9 +75,7 @@ bot.on("inline_query", (query) => {
   bot.answerInlineQuery(query.id, [
     {
       type: "contact",
-      id: "louismerlin",
-      phone_number: "+41791098364",
-      first_name: query.query,
+      id: query.query,
     }
   ]);
 });
