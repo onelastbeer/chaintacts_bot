@@ -43,7 +43,7 @@ bot.onText(/\/start/, function (msg, match) {
 });
 
 // Inline querying the bot
-bot.on('inline_query', function(msg, match) {
+/*bot.on('inline_query', function(msg, match) {
   var commands = match[1].split(" ");
   var username = commands[0];
   if (username == null) {
@@ -69,6 +69,19 @@ bot.on('inline_query', function(msg, match) {
       bot.sendMessage(msg.chat.id, message);
     }
   })
+
+});*/
+telegram.on("inline_query", (query) => {
+  telegram.answerInlineQuery(query.id, [
+    {
+      type: "article",
+      id: "testarticle",
+      title: "Hello world",
+      input_message_content: {
+        message_text: "Hello, world! This was sent from my super cool inline bot."
+      }
+    }
+  ]);
 });
 
 //match /chaintact [whatever]
