@@ -72,15 +72,38 @@ bot.onText(/\/start/, function (msg, match) {
 
 });*/
 bot.on("inline_query", (query) => {
+  var username = query.query;
+  var address;
+  if (username) {
+    if (username[0] == "@") username = username.substring(1);
+    User.findOne({telegramUsername: username}, function(err, user) {
+      if (user.ETHAddress) {
+        address = user.ETHAddress;
+      } else {
+        address = "has no address"
+      }
+    });
+  } else {
+    address = "not Found"
+  }
   bot.answerInlineQuery(query.id, [
     {
-      type: "contact",
-      id: query.query,
+      type: "article",
+      id: "channel",
+      title: "Channel Addresses",
+      input_message_content: {
+        message_text: "TODO : group's addresses"
+      }
+    },
+    {
+      type: "article",
+      id: "query",
+      title: "User " + query.query,
+      input_message_content: {
+        message_text: address
+      }
     }
   ]);
-});
-bot.on('callback_query', (callback) => {
-  bot.answerCallbackQuery(msg.id, "yes you did it");
 });
 
 //match /chaintact [whatever]
