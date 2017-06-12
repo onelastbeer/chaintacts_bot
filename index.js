@@ -42,6 +42,35 @@ bot.onText(/\/start/, function (msg, match) {
   bot.sendMessage(chatId, message);
 });
 
+// Inline querying the bot
+bot.on('inline_query', function(msg, match) {
+  var commands = match[1].split(" ");
+  var username = commands[0];
+  if (username == null) {
+    var message = "Please input a username !\n" + helpText
+    bot.sendMessage(msg.chat.id, message);
+  }
+  if (username[0] == "@") username = username.substring(1);
+  User.findOne({ telegramUsername: username }, function(err, user) {
+    if (user == null) {
+      message = "No match found for username " + username
+      bot.sendMessage(msg.chat.id, message);
+    } else if (user.ETHAddress == null) {
+      if (user.firstName != null) {
+        message = user.firstName + " (@" + user.telegramUsername + ")"
+      } else message = user.telegramUsername
+      message += " : not set yet"
+      bot.sendMessage(msg.chat.id, message);
+    } else {
+      if (user.firstName != null) {
+        message = user.firstName + " (@" + user.telegramUsername + ")"
+      } else message = user.telegramUsername
+      message += " : " + user.ETHAddress
+      bot.sendMessage(msg.chat.id, message);
+    }
+  })
+});
+
 //match /chaintact [whatever]
 bot.onText(/\/chaintact (.+)/, function (msg, match) {
   var fromId = msg.from.id; // get the id, of who is sending the message
