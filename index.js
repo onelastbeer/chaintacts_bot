@@ -77,9 +77,7 @@ bot.on("inline_query", (query) => {
   if (username) {
     if (username[0] == "@") username = username.substring(1);
     User.findOne({telegramUsername: username}, function(err, user) {
-      if (user.ETHAddress) {
-        inlineAnswer(query.id, query.query, user.ETHAddress);
-      }
+      inlineAnswer(query.id, query.query, user.ETHAddress);
     });
   } else {
     inlineAnswer(query.id, query.query, "not found");
