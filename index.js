@@ -99,7 +99,7 @@ var inlineAnswer = function (id, user, userMessage) {
       id: "query",
       title: "User " + user,
       input_message_content: {
-        message_text: userMessage
+        message_text: user + " : " + userMessage
       }
     }
   ]);
