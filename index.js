@@ -71,8 +71,8 @@ bot.onText(/\/start/, function (msg, match) {
   })
 
 });*/
-telegram.on("inline_query", (query) => {
-  telegram.answerInlineQuery(query.id, [
+bot.on("inline_query", (query) => {
+  bot.answerInlineQuery(query.id, [
     {
       type: "article",
       id: "testarticle",
