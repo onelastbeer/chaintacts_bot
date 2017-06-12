@@ -78,15 +78,16 @@ bot.on("inline_query", (query) => {
     if (username[0] == "@") username = username.substring(1);
     User.findOne({telegramUsername: username}, function(err, user) {
       if (user.ETHAddress) {
-        address = user.ETHAddress;
-      } else {
-        address = "has no address"
+        inlineAnswer(query.id, query.query, user.ETHAddress);
       }
     });
   } else {
-    address = "not Found"
+    inlineAnswer(query.id, query.query, "not found");
   }
-  bot.answerInlineQuery(query.id, [
+});
+
+var inlineAnswer = function (id, user, userMessage) {
+  bot.answerInlineQuery(id, [
     {
       type: "article",
       id: "channel",
@@ -98,13 +99,13 @@ bot.on("inline_query", (query) => {
     {
       type: "article",
       id: "query",
-      title: "User " + query.query,
+      title: "User " + user,
       input_message_content: {
-        message_text: address
+        message_text: userMessage
       }
     }
   ]);
-});
+}
 
 //match /chaintact [whatever]
 bot.onText(/\/chaintact (.+)/, function (msg, match) {
